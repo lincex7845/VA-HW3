@@ -48,7 +48,10 @@
                     .attr("class", "xLabels mono");
     
     const type = (row) => {
-            return {y: row.Chemical, x: row.Day, value: row.Reading, hour: row.Hour};
+        var selectedIndex = d3.select('.select').property('selectedIndex')
+        var month = d3.select('.select').property('options')[selectedIndex].text;
+            return {y: row.Chemical, x: row.Day, value: row.Reading,
+                 hour: row.Hour, label: "" + month + " " + row.Day + " - Reading: " + row.Reading + " (" + row.Chemical +")"};
     };
 
     const drawHeatMap = function (dataset){
@@ -79,7 +82,7 @@
                     .transition()
                     .duration(1000)
                     .style("fill", (d) => colorScale(d.value));
-                cards.select("title").text((d) => d.value);
+                cards.select("title").text((d) => d.label);
                 cards.exit().remove();
 
                 const legend = svg.selectAll(".legend")
