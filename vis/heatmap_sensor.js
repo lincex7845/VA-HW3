@@ -127,5 +127,5 @@
     }
 
 start();
-drawHeatMap('../data/sensor_12_avg.tsv');
+drawHeatMap('../data/sensor_4_avg.tsv');
     
