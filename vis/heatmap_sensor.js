@@ -61,13 +61,12 @@
                     .range(reds);
 
                 const cards = svg.selectAll(".reading")
-                    .data(data, (d) => d.x+':'+d.hour);
+                    .data(data, (d) => d.x+':'+d.hour + "_" + d.y);
                 cards.append("title");
                 cards.enter().append("rect")
                     .attr("x", (d) => (d.x - 1) * gridSize)
                     .attr("y", (d) => {
                         var yValue = "" + d.hour + "_" + d.y;
-                        console.log(yValue+"-->"+yValues.indexOf(yValue))
                         return yValues.indexOf(yValue) * (gridSize/3)
                     })
                     .attr("rx", 4)
@@ -106,7 +105,8 @@
     
     function start(){
         var dsets = [{month: "Abril", data: "../data/sensor_4_avg.tsv"},
-                        {month: "Agosto", data: "../data/sensor_8_avg.tsv"}, {month: "Diciembre", data: "../data/sensor_12_avg.tsv"}];
+                        {month: "Agosto", data: "../data/sensor_8_avg.tsv"},
+                        {month: "Diciembre", data: "../data/sensor_12_avg.tsv"}];
         
         var select = d3.select('#datasets')
             .append('select')
@@ -127,5 +127,5 @@
     }
 
 start();
-drawHeatMap('../data/sensor_4_avg.tsv');
+drawHeatMap('../data/sensor_12_avg.tsv');
     
