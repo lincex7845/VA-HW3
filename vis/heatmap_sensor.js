@@ -10,7 +10,7 @@
             return "" + subArray[0] + "_" + subArray[1];
         });
     }
-
+// @vlarandac resultan muchos valores en el eje y lo que hace un poco dificil la lectura, por cada uno de los 4 compuestos para cada hora se ve un poco ajustado el espacio
     const margin = {top: 20, right:100, bottom: 30, left: 5},
             width = 1400 - margin.left - margin.right,
             height = 1100 - margin.top - margin.bottom,
@@ -96,6 +96,7 @@
                     .attr("width", legendElementWidth)
                     .attr("height", gridSize / 2)
                     .style("fill", (d, i) => reds[i]);
+                // @vlarandac la escala facilita la lectura y da una mejor perspectiva frente a los hallazgos esperados. 
                 legend_g.append("text")
                     .attr("class", "mono")
                     .text((d) => "≥ " + d.toFixed(2))
@@ -105,7 +106,7 @@
             }
         });
     };
-    
+    // @vlarandac el filtro por meses es muy buena idea para poder visualizar el comportamiento en distintos momentos.
     function start(){
         var dsets = [{month: "Abril", data: "../data/sensor_4_avg.tsv"},
                         {month: "Agosto", data: "../data/sensor_8_avg.tsv"},
